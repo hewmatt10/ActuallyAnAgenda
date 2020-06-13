@@ -1,0 +1,78 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example.firestore</groupId>
+    <artifactId>firestore-samples</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>Google Cloud Firestore Samples</name>
+    <description>
+        Quick start and code snippets supporting Firestore documentation
+    </description>
+
+    <parent>
+        <groupId>com.google.cloud.samples</groupId>
+        <artifactId>shared-configuration</artifactId>
+        <version>1.0.17</version>
+    </parent>
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <firestore.project.id/>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.cloud</groupId>
+                <artifactId>libraries-bom</artifactId>
+                <version>4.4.1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-firestore</artifactId>
+        </dependency>
+        <!-- [END fs-maven] -->
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- [START fs-maven] -->
+    </dependencies>
+    <!-- [END fs-maven] -->
+    <build>
+        <defaultGoal>test</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>com.example.firestore.Quickstart</argument>
+                        <argument>${firestore.project.id}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
